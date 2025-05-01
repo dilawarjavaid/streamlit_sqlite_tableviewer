@@ -20,3 +20,10 @@ if uploaded_file is not None:
 
     if table_names:
         selected_table = st.selectbox("Select a table", table_names)
+
+        if selected_table:
+            query = f"SELECT * FROM {selected_table}"
+            df = pd.read_sql_query(query, conn)
+
+            st.write(f"Contents of {selected_table} table:")
+            st.dataframe(df)
