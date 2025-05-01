@@ -13,3 +13,7 @@ if uploaded_file is not None:
 
     conn = sqlite3.connect(db_file_path)
     cursor = conn.cursor()
+
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    tables = cursor.fetchall()
+    table_names = [table[0] for table in tables]
